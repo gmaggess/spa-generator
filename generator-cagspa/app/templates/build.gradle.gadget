@@ -1,0 +1,79 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.api.tasks.Exec
+
+class GruntTask extends Exec {
+    private String gruntExecutable = Os.isFamily(Os.FAMILY_WINDOWS) ? "grunt.cmd" : "grunt"
+    private String switches = "--no-color"
+ 
+    String gruntArgs = "" 
+ 
+    public GruntTask() {
+        super()
+        this.setExecutable(gruntExecutable)
+    }
+ 
+    public void setGruntArgs(String gruntArgs) {
+        this.args = "$switches $gruntArgs".trim().split(" ") as List
+    }
+}
+
+task jsBuild(type: GruntTask) {
+    description = 'Invokes the following tasks from Grunt: clean, uglify, sass, mincss, imagemin, and copy.'
+    gruntArgs = "build"
+}
+ 
+task jsAll(type: GruntTask) {
+    description = 'Invokes the following tasks from Grunt: clean, uglify, sass, mincss, imagemin, copy, and jshint.'
+    gruntArgs = "default"
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "${artifactory_contextUrl}/tesseract"
+        }
+
+    }
+    dependencies {
+        classpath 'oracle.gradle.plugins:GadgetPlugin:1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: GadgetPlugin
+
+osn {
+    server {
+        url          '${osn_url}'
+        username     '${osn_username}'
+        password     '${osn_password}' 
+    }
+    feature {
+        name 'knockout'
+        v '2.2.0'
+        resource 'knockout-2.2.0.js'
+    }
+    feature {
+        name '${gadget_name}'
+        v '1.0.0'
+        resource 'osnUtil.js'
+        resource '${js_artifact}'
+    }
+    gadget {
+        name        '${gadget_name}'
+        external_id '${gadget_id}'
+        enabled      true
+        available    true
+        scope       'Conversation'
+    }
+}
+
+task publish(description: "Runs jsAll and deploys the gadget plus features to your OSN instance.") << {
+  
+  print('Building static resources...')
+  tasks.jsBuild.execute()
+  println('Pushing changes to OSN server...')
+  tasks.deploy.execute()
+  println('Done')
+}
+
+deploy.description = 'Deploys gadgets and its features to OSN.'

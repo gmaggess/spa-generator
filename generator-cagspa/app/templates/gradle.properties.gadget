@@ -1,0 +1,7 @@
+artifactory_contextUrl=http://artifactory-poc.oraclecorp.com/artifactory
+osn_url=https://change.me/osn
+osn_username=Admin
+osn_password=waggle
+gadget_name=<%= _.slugify(appname) %>
+gadget_id=oracle.cag.<%= _.slugify(appname) %>
+js_artifact=<%= _.slugify(appname) %>.min.js

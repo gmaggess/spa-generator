@@ -1,0 +1,17 @@
+# IDE
+.metadata
+.idea
+*.sublime-*
+.classpath
+.project
+.settings
+# Others
+node_*
+.groovy/
+.gradle
+.sass-cache/
+build/
+test-output/
+dist/
+
+

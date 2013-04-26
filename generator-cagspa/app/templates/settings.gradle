@@ -1,1 +1,1 @@
-include 'project-gadget','project-service','project-integration-test','project-selenium','provision'
+include '<%= _.slugify(appname) %>-gadget','<%= _.slugify(appname) %>-service','<%= _.slugify(appname) %>-integration-test','<%= _.slugify(appname) %>-selenium','provision'

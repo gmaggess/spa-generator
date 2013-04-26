@@ -1,2 +1,4 @@
-var path = require('path');
-console.log(this.basename(__dirname));
+var alo = 'this.projectName'.replace(/(?:^|\s)\w/g, function(match) {
+        return match.toUpperCase();
+});
+console.log(alo);

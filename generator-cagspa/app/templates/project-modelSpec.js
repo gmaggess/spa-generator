@@ -3,18 +3,18 @@ Sample Jasmine test
 **/
 describe("A user is", function() {
 
-  var COOKIE_EVERNOTE = 'osn_evernote';
+  var COOKIE_NAME = '<%= _.slugify(appname) %>_cookie';
 
-  it("authenticated if 'osn_cookie' is present", function() {
-    $.cookie(COOKIE_EVERNOTE, "lWgTnnoU9hgdcPAUSjnmj71PRfz1IOKJLsiPmXhbyIbn4dO3Zl1yIqfBcTKOQEPhiQpFafmr0iGTwXvCufSUR2jX8kVx0hH468ig1U94s6");
+  it("authenticated if 'cookie' is present", function() {
+    $.cookie(COOKIE_NAME %>, "lWgTnnoU9hgdcPAUSjnmj71PRfz1IOKJLsiPmXhbyIbn4dO3Zl1yIqfBcTKOQEPhiQpFafmr0iGTwXvCufSUR2jX8kVx0hH468ig1U94s6");
     var security = new Security();
     security.isAuthenticated(function(data) {
       expect(data).toBe(true);
     });
   });
 
-  it("not authenticated if 'osn_cookie' is empty", function() {
-    $.cookie(COOKIE_EVERNOTE, "");
+  it("not authenticated if 'cookie' is empty", function() {
+    $.cookie(COOKIE_NAME, "");
     var security = new Security();
     security.isAuthenticated(function(data) {
       expect(data).toBe(false);

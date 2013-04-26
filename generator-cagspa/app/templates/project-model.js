@@ -2,7 +2,7 @@
 Sample Model
 **/
 var Security = {
-    COOKIE_NAME: 'osn_cookie',
+    COOKIE_NAME: '<%= _.slugify(appname) %>_cookie',
     isAuthenticated: function(callback) {
         callback( !! $.cookie(Security.COOKIE_NAME));
     }
@@ -11,11 +11,11 @@ var Security = {
 /**
 Sample Model
 **/
-var MyModel = function() {
+var <%= _.slugify(appname) %>Model = function() {
 
     var self = this;
     var CONTENT_TYPE = 'application/json; charset=utf-8';
-    var BASE_URL = '/cag/evernote/v1';
+    var BASE_URL = '/cag/<%= _.slugify(appname) %>/v1';
     var getResources = function(callback) {
         $.ajax({
             type: "GET",
@@ -39,7 +39,7 @@ var MyModel = function() {
                 } catch (e) {
                     callback({
                         status: data.status,
-                        message: MSG_evernote_server_error
+                        message: MSG_<%= _.slugify(appname) %>_server_error
                     });
                 }
             }
@@ -54,7 +54,7 @@ var MyModel = function() {
                 } else {
                     callback({
                         status: 401,
-                        message: MSG_evernote_authentication_error
+                        message: MSG_<%= _.slugify(appname) %>_authentication_error
                     });
                 }
             });

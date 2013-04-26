@@ -1,16 +1,18 @@
 {
   "name": "<%= _.slugify(appname) %>",
-  "title": "<%= _.slugify(appname) %>",
+  "title": "OSN <%= _.slugify(appname) %> Gadget",
   "preferGlobal": true,
   "version": "0.1.0",
   "author": "CAG <cag@oracle.com>",
-  "description": "<%= _.slugify(appname) %>",
+  "description": "<%= _.slugify(appname) %> OSN Gadget",
   "repository": {
     "type": "git",
     "url": "git@orahub.oraclecorp.com:<%= _.slugify(appname) %>-gadget.git"
   },
   "keywords": [
-    "<%= _.slugify(appname) %>"
+    "<%= _.slugify(appname) %>",
+    "osn",
+    "gadget"
   ],
   "dependencies": {},
   "analyze": false,
