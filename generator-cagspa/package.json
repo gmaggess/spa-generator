@@ -1,0 +1,39 @@
+{
+  "name": "generator-cagspa",
+  "version": "0.0.0",
+  "description": "A generator for Single Page Applications",
+  "keywords": [
+    "cag",
+    "single page application",
+    "yeoman-generator"
+  ],
+  "homepage": "https://github.com/gmaggess/generator-cagspa",
+  "bugs": "https://github.com/gmaggess/generator-cagspa/issues",
+  "author": {
+    "name": "gmaggess",
+    "email": "george.maggessy@gmail.com",
+    "url": "https://github.com/gmaggess"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gmaggess/generator-cagspa.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.10.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.9.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
