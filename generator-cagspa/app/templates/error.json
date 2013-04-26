@@ -1,0 +1,12 @@
+{
+	"readyState": 4,
+	"responseText": {
+		"status": "404",
+		"code": null,
+		"message": "No data found",
+		"messageDeveloper": null,
+		"moreInfo": null
+	},
+	"status": 404,
+	"statusText": "error"
+}
