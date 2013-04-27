@@ -1,13 +1,13 @@
 {
-  "name": "<%= _.slugify(appname) %>",
-  "title": "<%= _.slugify(appname) %>",
+  "name": "<%= appname %>",
+  "title": "<%= appname %>",
   "preferGlobal": true,
   "version": "0.1.0",
   "author": "CAG <cag@oracle.com>",
-  "description": "<%= _.slugify(appname) %>",
+  "description": "<%= appname %> Single Page Application",
   "repository": {
     "type": "git",
-    "url": "git@orahub.oraclecorp.com:<%= _.slugify(appname) %>-gadget.git"
+    "url": "git@orahub.oraclecorp.com:<%= _.slugify(appname) %>.git"
   },
   "keywords": [
     "<%= _.slugify(appname) %>"

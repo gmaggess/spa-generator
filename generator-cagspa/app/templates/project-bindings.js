@@ -1,7 +1,7 @@
 /** 
 Add your comment here. 
 **/ 
-var <%= _.slugify(appname) %>ViewModel = function(facade) {
+var <%= appname %>ViewModel = function(facade) {
 
     var self = this;
     self.guid = ko.observable();

@@ -11,6 +11,12 @@
         <Require feature="knockout" version="2.2.0"/>
         <Require feature="myapplication" version="1.0.0"/>
         <Locale lang="all">
+            <msg name="osn.gadget.name"><%= appname %></msg>
+            <msg name="osn.gadget.name.lowercase"><%= _.slugify(appname) %></msg>
+            <msg name="osn.gadget.name.plural"><%= appname %></msg>
+            <msg name="osn.gadget.name.plural.lowercase"><%= _.slugify(appname) %></msg>
+            <msg name="osn.group.name"><%= appname %></msg>
+            <msg name="osn.group.name.lowercase"><%= _.slugify(appname) %></msg>
             <msg name="title">Untitled</msg>
             <msg name="created">Created</msg>
             <msg name="updated">Modified</msg>
@@ -22,24 +28,27 @@
             <msg name="dialog_header">Information</msg>
             <msg name="must_authenticate">You must authenticate first.</msg>
             <msg name="dialog_button_ok">OK</msg>
-            <msg name="search_results">Search Results</msg>
             <msg name="no_data_found">No data found</msg>
-            <msg name="application_server_error">The server encountered an internal error and was unable to complete your request. Please contact Oracle Support.</msg>
+            <msg name="<%= _.slugify(appname) %>_server_error">The server encountered an internal error and was unable to complete your request. Please contact Oracle Support.</msg>
             <msg name="error_access_properties">Error accessing the widget properties.</msg>
+            <msg name="<%= _.slugify(appname) %>_authorization_error">You are not authorized to access this note.</msg>
+            <msg name="<%= _.slugify(appname) %>_authentication_error">You are not presently authenticated as an <%= appname %> user. If you can't see the <%= appname %> authentication window, please turn off the pop-up blocker and click the Refresh button on the right top position of the gadget.</msg>
+            <msg name="search_tooltip">You can use boolean operators such as + or -. The * character is the wildcard character. For advanced search operators use 'intitle:', 'tag:', and 'notebook:'.</msg>
         </Locale>   
     </ModulePrefs>
     <Content type="html">
         <![CDATA[
-        <link href="/cag/share/css/project-gadget.css" rel="stylesheet" type="text/css">
+        <link href="/cag/share/css/<%= _.slugify(appname) %>.css" rel="stylesheet" type="text/css">
         <div>
             <!-- ADD YOUR HTML HERE -->
         </div>
         <script>
 
             var MSG_dialog_header = "__MSG_dialog_header__";
-            var MSG_application_authentication_error = "__MSG_application_authentication_error__";
-            var MSG_application_server_error = "__MSG_application_server_error__";
+            var MSG_<%= _.slugify(appname) %>_authentication_error = "__MSG_<%= _.slugify(appname) %>_authentication_error__";
+            var MSG_<%= _.slugify(appname) %>_server_error = "__MSG_<%= _.slugify(appname) %>_server_error__";
             var MSG_error_access_properties = "__MSG_error_access_properties__";
+            var MSG_new_note = "__MSG_new_note__";
             var MSG_save_success = "__MSG_save_success__";
             var MSG_no_data_found = "__MSG_no_data_found__";
             var MSG_tags = "__MSG_tags__";

@@ -1,0 +1,391 @@
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/utilities/general/float";
+@import "compass/css3/user-interface";
+@import "compass/css3/box-shadow";
+
+$defaultColor: #0572CE;
+$activeColor: #2A87D5;
+$defaultBorderColor: #B3B3B3;
+$defaultDarkColor: #005C9D;
+$defaultShadowColor: #94BBDD;//#E8E8E8
+$defaultBorderRadius: 3px;
+$defaultPadding: 3px;
+
+@mixin fontStd() {
+    font-size: 10px;
+    font-style: normal !important;
+    font-weight: normal !important;
+    color: $defaultColor !important;
+    text-decoration: none;
+}
+
+@mixin paddingLR($dist : 5px) {
+    padding-left: $dist;
+    padding-right: $dist;
+}
+
+html, body {
+    @include user-select(none);
+    font: 100% Tahoma, Arial, Helvetica, Verdana, sans-serif;
+    background: transparent;
+    line-height: 1;
+    cursor: default;
+}
+
+.osnReadOnly {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+}
+
+.osnWidth {
+    position: relative; 
+    width: 100%;
+}
+
+.osnOuter {
+    margin-right: $defaultPadding;
+    margin-left: $defaultPadding;
+}
+
+.uiHeader {
+    font-family: Tahoma, Arial, Helvetica, Verdana, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-style: normal;
+    background-color: #ECEFF4;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom:10px;
+}
+
+.readOnlyBorder {
+    border-bottom: 1px solid #EAEBEC;
+}
+
+.readOnlyTitle, .readOnlyNotebookTag, .noteDates {
+    @include float-left;
+}
+
+.readOnlyTitle {
+    padding-left: $defaultPadding;
+    height: 20px;
+}
+
+.readOnlyContent {
+    padding: 65px 0 20px $defaultPadding; 
+}
+
+.readOnlyNotebookTag {
+    padding-left: $defaultPadding;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.tagLine {
+    height: 20px;
+}
+
+.noteDates, .noteSearch {
+    font-size: .8em;
+}
+
+.noteSearchTitle {
+  font-size: .8em;
+  font-weight: bold;
+}
+
+.searchOuter {
+    @include border-radius($defaultBorderRadius);
+    border: 1px solid $defaultBorderColor;
+    height: 24px;
+    position: relative;
+}
+
+.searchSelectOuter {
+    position: absolute;
+}
+
+.searchInputOuter {
+    @extend .searchSelectOuter;
+    left:200px;
+    width:500px;
+    border: none;
+    overflow:hidden;
+}
+
+.orderBySelect {
+    width: 200px; 
+    height:26px; 
+    line-height: 26px;
+    margin: -1px 0 0 -1px;
+    position: absolute;
+}
+
+.inputSearch {
+    width: 100%;
+    border: none;
+}
+
+.searchButtonOuter {
+    @include float-right;
+    @include border-top-right-radius($defaultBorderRadius);
+    @include border-bottom-right-radius($defaultBorderRadius);
+    border-left: 1px solid $defaultBorderColor;
+    background: url("/cag/share/images/button-outer.png") 0px 0px repeat-x;
+    height: 24px;
+}            
+
+.searchButtonOuter .searchButton, .searchButtonOuter .searchButton[disabled] {
+    border: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    background: transparent;
+    font-size: 11px;
+    font-weight: bold;
+    height: 24px;
+}            
+
+.searchButtonOuter .searchButton {
+    color: #4C4C4C;
+    cursor: pointer;
+}
+
+.searchButtonOuter .searchButton[disabled] {
+    color: $defaultBorderColor;
+    cursor: default;
+}
+
+.searchResult {
+    border-top: 1px solid #D2E1ED;
+    border-bottom: none;
+}
+
+.searchResultContainer {
+    max-height: 520px;
+    overflow: auto;
+}
+
+.searchResultRow {
+    list-style-type: none;
+    border-bottom: 1px solid #EAEBEC;
+    height: 75px;
+    div {
+        padding: $defaultPadding;
+    }
+}
+
+.searchResultRow:hover {
+    background: #FFF7D4;
+}
+
+.noteSearch {
+    margin-right:10px
+}
+
+:focus {
+    outline: none;
+}
+
+.textbox {
+    font-size: 13px;
+}
+
+input {
+    @include border-radius($defaultBorderRadius);
+    border: 1px solid $defaultBorderColor;
+    padding: $defaultPadding 5px;
+    overflow:visible;
+    color: #212121;
+    margin-bottom: 5px;
+}
+
+input::-webkit-input-placeholder, input:-moz-placeholder, input:-ms-input-placeholder {
+    font-style: italic;
+}
+
+input:focus {
+    @include single-box-shadow($defaultShadowColor, 0, 0, 1px);
+    padding: 2px 5px;
+    overflow:visible;
+    border-color: $defaultColor;
+}
+select {
+    @include border-radius($defaultBorderRadius);
+    color: #212121;
+    border: 1px solid $defaultBorderColor;
+}
+
+a.btn, a.btn:visited {
+    @include border-radius($defaultBorderRadius);
+    background-color: $defaultColor;
+    border: 1px solid $defaultDarkColor;
+    padding: 0 10px;
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 23px;
+    height: 23px;
+}
+
+a.btn:hover {
+    @include single-box-shadow(#E8E8E8, 0, 1px, 0);
+    background-color: $activeColor;
+    border-color: #005897;
+    cursor: pointer;
+}
+
+div.jHtmlArea { 
+    @include border-radius($defaultBorderRadius);
+    border: 1px solid $defaultBorderColor;
+    display: inline block; 
+    font-size: 100%;
+    width: 100px;
+}
+
+.noteTitleInput {
+    width:100%;
+}
+
+.wcAdmin-dialog {
+    position: absolute;
+    height: 135px;
+    width: 400px;
+    left: 210px;
+    top: 25px;
+}
+
+.wcAdmin-dialogTopCenterInner {
+    @include border-top-left-radius(2px);
+    @include border-top-right-radius(2px);
+    @include single-box-shadow(#9A9A9A, 3px, 3px, 5px);
+    background-color: $defaultColor;
+    height: 30px;
+    padding: 0 24px 0 12px;
+
+    .Caption {
+        color: #FFFFFF;
+        font-size: 15px;
+        line-height: 30px;
+    }
+}
+
+.wcAdmin-dialogMiddleCenterInner {
+    @include border-bottom-right-radius(2px);
+    @include border-bottom-left-radius(2px);
+    @include single-box-shadow(#9A9A9A, 3px, 3px, 5px);
+    background-color: #FFFFFF;
+    padding: 12px;
+    color: #3C3C3C;
+}
+
+.wcAdmin-dialogBottom {
+    padding-top: 10px;
+    float: right;
+}
+
+a.wcAdmin-dialogButton {
+    @include border-radius(3px);
+    background-color: $defaultColor;
+    border: 1px solid $defaultDarkColor;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 12px;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+a.wcAdmin-dialogButton:visited {
+    @extend a.wcAdmin-dialogButton;
+}
+
+a.wcAdmin-dialogButton:hover {
+    @include single-box-shadow(#E8E8E8, 0, 1px, 0);
+    background-color: $activeColor;
+    border-color: #005897;
+    cursor: pointer;
+}
+
+a.wcAdmin-dialogButton:active {
+    @include single-box-shadow(#004D84, 0, 2px, 4px, inset);
+    background-color: $defaultDarkColor;
+    border-color: #003264;
+}            
+
+.tag {
+    @include border-radius(3px);
+    border: 1px solid $defaultColor;
+    color: $defaultColor;
+    font-family: helvetica;  
+    font-size:13px;
+    background: #E7F0F7;
+    padding: $defaultPadding 5px $defaultPadding 5px;
+    margin-right: 5px;
+    vertical-align: top;
+    display: inline-block;
+}    
+
+h4 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+} 
+
+ul {
+    li {
+        list-style-type: none;
+        text-decoration: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    li.separator{
+        @include paddingLR;
+        @include fontStd;
+        @include float-left;
+    }
+
+    li.navlink {
+        @include float-left;
+    }
+}
+
+ul.navlink{
+    @include paddingLR;
+}
+
+a.navlink {
+    @include fontStd;
+}
+
+a.navlink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* float clearing for IE6 */
+* html .clearfix{
+  height: 1%;
+  overflow: visible;
+}
+
+/* float clearing for IE7 */
+*+html .clearfix{
+  min-height: 1%;
+}
+
+/* float clearing for everyone else */
+.clearfix:after{
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  font-size: 0;
+}

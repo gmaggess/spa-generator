@@ -11,7 +11,7 @@ var Security = {
 /**
 Sample Model
 **/
-var <%= _.slugify(appname) %>Model = function() {
+var <%= appname %>Model = function() {
 
     var self = this;
     var CONTENT_TYPE = 'application/json; charset=utf-8';

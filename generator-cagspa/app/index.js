@@ -5,7 +5,10 @@ var yeoman = require('yeoman-generator');
 
 var CagspaGenerator = module.exports = function CagspaGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
-  this.argument('appname', { type: String, required: false });
+  this.argument('appname', {
+    type: String,
+    required: false
+  });
   this.appname = this.appname || path.basename(process.cwd());
 
   this.on('end', function() {
@@ -36,7 +39,9 @@ CagspaGenerator.prototype.askFor = function askFor() {
   var prompts = [{
     name: 'projectName',
     message: 'What\'s your project name?',
-    default: this.appname
+    default: this.appname.replace(/(?:^|\s)\w/g, function(match) {
+      return match.toUpperCase();
+    })
   }, {
     name: 'projectType',
     message: 'Is it an OSN Gadget?',
@@ -48,7 +53,9 @@ CagspaGenerator.prototype.askFor = function askFor() {
       return this.emit('error', err);
     }
 
-    this.appname = props.projectName;
+    this.appname = props.projectName.replace(/(?:^|\s)\w/g, function(match) {
+      return match.toUpperCase();
+    });
     this.projectType = (/y/i).test(props.projectType);
 
     cb();
@@ -75,6 +82,10 @@ CagspaGenerator.prototype.editorConfig = function editorConfig() {
   this.copy('editorconfig', '.editorconfig');
 };
 
+CagspaGenerator.prototype.gruntfile = function gruntfile() {
+  this.template('_Gruntfile.js', 'Gruntfile.js');
+};
+
 CagspaGenerator.prototype.app = function app() {
   this.mkdir('src');
   this.mkdir('src/main');
@@ -96,26 +107,25 @@ CagspaGenerator.prototype.app = function app() {
   /* Build */
   this.copy('gradle.properties', 'gradle.properties');
   this.copy('settings.gradle', 'settings.gradle');
-  this.copy('Gruntfile.js', 'Gruntfile.js');
   /* Source */
-  this.template('project-core.js', 'src/main/scripts/' + this.appname + '.core.js');
-  this.template('project-bindings.js', 'src/main/scripts/' + this.appname + '.view.js');
-  this.template('project-facade.js', 'src/main/scripts/' + this.appname + '.facade.js');
-  this.template('project-model.js', 'src/main/scripts/' + this.appname + '.model.js');
+  this.template('project-core.js', 'src/main/scripts/' + this.appname.toLowerCase() + '.core.js');
+  this.template('project-bindings.js', 'src/main/scripts/' + this.appname.toLowerCase() + '.view.js');
+  this.template('project-facade.js', 'src/main/scripts/' + this.appname.toLowerCase() + '.facade.js');
+  this.template('project-model.js', 'src/main/scripts/' + this.appname.toLowerCase() + '.model.js');
   /* Test */
   this.copy('node_http.js', 'node_http.js');
   this.copy('testacular.conf.js', 'src/test/testacular.conf.js');
-  this.template('project-modelSpec.js', 'src/test/spec/' + this.appname + '.modelSpec.js');
+  this.template('project-modelSpec.js', 'src/test/spec/' + this.appname.toLowerCase() + '.modelSpec.js');
   this.copy('error.json', 'src/test/spec/fixtures/json/error.json');
   /* Resources */
-  this.copy('project.scss', 'src/main/resources/css/' + this.appname + '.scss');
+  this.copy('main.scss', 'src/main/resources/css/main.scss');
   this.copy('load.gif', 'src/main/resources/images/load.gif');
 
   if (this.projectType) {
     this.copy('build.gradle.gadget', 'build.gradle');
     this.copy('gradle.properties.gadget', 'gradle.properties');
-    this.copy('project-osnUtil.js', 'src/main/scripts/' + this.appname + '.osnUtil.js');
-    this.copy('project-gadgetUtil.js', 'src/main/scripts/' + this.appname + '.gadgetUtil.js');
+    this.copy('project-osnUtil.js', 'src/main/scripts/' + this.appname.toLowerCase() + '.osnUtil.js');
+    this.copy('project-gadgetUtil.js', 'src/main/scripts/' + this.appname.toLowerCase() + '.gadgetUtil.js');
     this.copy('osnUtil.js', 'src/main/scripts/libs/osnUtil.js');
   } else {
     this.copy('build.gradle', 'build.gradle');

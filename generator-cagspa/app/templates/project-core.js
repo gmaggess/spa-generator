@@ -2,7 +2,7 @@
 Add your comment here. 
 **/ 
 Core = {
-    CHANNEL_1: 'NAMESPACE:LOAD-RESOURCEA',
+    CHANNEL_1: '<%= appname %>:LOAD-RESOURCEA',
     /** 
     Start UI components.
     **/ 
@@ -18,13 +18,13 @@ Core = {
 
         this.startComponents();
         //start models
-        var myModel = new MyModel();
+        var <%= _.slugify(appname) %>Model = new <%= appname %>Model();
         //start facade
         var facade = new Facade(mediator, {
-            model: myModel
+            model: <%= _.slugify(appname) %>Model
         });
         //start modules
-        var module = new MyViewModel(facade);
+        var module = new <%= appname %>ViewModel(facade);
         ko.applyBindings(module);
         module.init();
     },
