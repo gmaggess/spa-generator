@@ -9,7 +9,7 @@
         <Require feature="osnutils"/>
         <Require feature="mediator" version="0.9.0"/>
         <Require feature="knockout" version="2.2.0"/>
-        <Require feature="myapplication" version="1.0.0"/>
+        <Require feature="<%= _.slugify(appname) %>" version="1.0.0"/>
         <Locale lang="all">
             <msg name="osn.gadget.name"><%= appname %></msg>
             <msg name="osn.gadget.name.lowercase"><%= _.slugify(appname) %></msg>
