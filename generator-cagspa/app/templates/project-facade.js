@@ -6,7 +6,7 @@ Private callback function that is invoked by the Mediator to render the main UI 
 **/ 
 var Facade = function(mediator, model) {
     var _private = {
-        model: model.<%= _.slugify(appname) %>Model,
+        <%= _.slugify(appname) %>: model.<%= _.slugify(appname) %>Model,
         publish: function(evt) {
             mediator.publish(evt.type, (typeof evt.data === 'undefined'?'':evt.data));
         },
@@ -14,7 +14,7 @@ var Facade = function(mediator, model) {
         Notice that the data is published back to Mediator in the model callback function. 
         **/
         loadResources: function(evt) {
-            _private.model.loadResources(function(data) {
+            _private.<%= _.slugify(appname) %>.loadResources(function(data) {
                 evt.data = data;
                 _private.publish(evt);
             });

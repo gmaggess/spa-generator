@@ -1,3 +1,5 @@
+'use strict';
+
 /** 
 Add your comment here. 
 **/ 
@@ -14,14 +16,13 @@ Core = {
     **/ 
     startAll: function() {
 
-        'use strict';
-
         this.startComponents();
         //start models
         var <%= _.slugify(appname) %>Model = new <%= appname %>Model();
+        var mediator = new Mediator();
         //start facade
         var facade = new Facade(mediator, {
-            model: <%= _.slugify(appname) %>Model
+            <%= _.slugify(appname) %>: <%= _.slugify(appname) %>Model
         });
         //start modules
         var module = new <%= appname %>ViewModel(facade);
