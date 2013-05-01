@@ -6,7 +6,7 @@ Private callback function that is invoked by the Mediator to render the main UI 
 **/ 
 var Facade = function(mediator, model) {
     var _private = {
-        <%= _.slugify(appname) %>: model.<%= _.slugify(appname) %>Model,
+        model: model.<%= _.slugify(appname) %>Model,
         publish: function(evt) {
             mediator.publish(evt.type, (typeof evt.data === 'undefined'?'':evt.data));
         },
