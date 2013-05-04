@@ -1,2 +1,6 @@
 node_modules/
 temp/
+<<<<<<< HEAD
+=======
+npm-debug.log
+>>>>>>> b717ce06c0f5171975a5c448dae45a3643922093

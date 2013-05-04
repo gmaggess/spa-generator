@@ -1,14 +1,12 @@
 {
-  "name": "generator-cagspa",
+  "name": "spa-generator",
   "version": "0.0.0",
-  "description": "A generator for Single Page Applications",
+  "description": "A generator for single page applications",
   "keywords": [
-    "cag",
-    "single page application",
-    "yeoman-generator"
+    "spa-generator"
   ],
-  "homepage": "https://github.com/gmaggess/generator-cagspa",
-  "bugs": "https://github.com/gmaggess/generator-cagspa/issues",
+  "homepage": "https://github.com/gmaggess/spa-generator",
+  "bugs": "https://github.com/gmaggess/spa-generator/issues",
   "author": {
     "name": "gmaggess",
     "email": "george.maggessy@gmail.com",
@@ -17,12 +15,16 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gmaggess/generator-cagspa.git"
+    "url": "https://github.com/gmaggess/spa-generator.git"
   },
   "scripts": {
+    "test": "mocha"
   },
   "dependencies": {
     "yeoman-generator": "~0.10.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.9.0"
   },
   "engines": {
     "node": ">=0.8.0"
